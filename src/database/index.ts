@@ -2,7 +2,9 @@ import { DataSource } from "typeorm";
 
 const appDataSource = new DataSource ({
   type: "sqlite",
-  database: "src/database/database.sqlite"
+  database: "src/database/database.sqlite",
+  entities: [/*...*/],
+  migrations: ["src/database/migrations/*.ts"]
 })
 
 appDataSource.initialize()
