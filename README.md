@@ -2,5 +2,7 @@
 
 > - Setting up the environment
 > - Database config
+> - Typeorm [atualizado]
 > - ...
+
 
