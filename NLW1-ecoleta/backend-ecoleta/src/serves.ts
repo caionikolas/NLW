@@ -1,6 +1,17 @@
 import express, { request, response } from 'express';
+import routes from './routes';
 
 const app = express();
+
+app.use(express.json())
+app.use(routes)
+
+app.listen(3333);
+
+
+
+
+
 
 // Rota: Endereço completo de requisição
 // Recurso: Qual entidade estamos acessando do sistema
@@ -10,24 +21,6 @@ const app = express();
 //PUT: Atualizar uma informação existente no back-end
 //DELETE: Remover uma informação do back-end
 
-app.get('/users', (request, response) => {
-    console.log('Listagem de usuario')
-
-    return response.json([
-        'Caio',
-        'Nikolas',
-        'Amorim',
-        'Silva'
-    ])
-});
-
-app.post('/users', (request, response) => {
-    const user = {
-        name: 'Caio',
-        email: 'caio@nikolas.com'
-    }
-
-    return response.json(user)
-})
-
-app.listen(3333);
+// Request Param: Parâmetros que vem na própria rota que identificam um recurso
+// Query Param: Parâmetros que vem na propria rota que geralmente opcionais para filtros, paginação
+// Request Body: Parâmetros para criação/atualização de informações
