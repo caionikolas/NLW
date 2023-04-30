@@ -14,8 +14,6 @@ app.listen(3333);
 
 
 
-
-
 // Rota: Endereço completo de requisição
 // Recurso: Qual entidade estamos acessando do sistema
 
