@@ -1,11 +1,9 @@
 /* ============ Index ===============  */
 
-import Home from '@/components/Home/home'
+import Pages from '../app/routes'
 
 export default function Index() {
   return (
-    <>
-      <Home/>
-    </>
+    <Pages/>
   )
 }
