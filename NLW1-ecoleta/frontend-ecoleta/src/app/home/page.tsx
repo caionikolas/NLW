@@ -2,6 +2,7 @@ import { Roboto } from 'next/font/google'
 import Image from 'next/image'
 import './home.css'
 import { FiLogIn } from 'react-icons/fi'
+import logo from './assets/logo.svg'
 
 const roboto = Roboto({ 
   subsets: ['latin'],
@@ -14,7 +15,7 @@ export default function Home() {
         <div className="content">
           <header>
             <Image
-              src="/logo.svg"
+              src={logo}
               alt="Ecoleta"
               width={100}
               height={24}

@@ -1,9 +1,9 @@
 /* ============ Index ===============  */
 
-import Pages from '../app/routes'
+import Home from "./home/page";
 
 export default function Index() {
   return (
-    <Pages/>
+    <Home />
   )
 }
