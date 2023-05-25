@@ -4,6 +4,7 @@ import './home.css'
 import { FiLogIn } from 'react-icons/fi'
 import logo from './assets/logo.svg'
 
+
 const roboto = Roboto({ 
   subsets: ['latin'],
   weight:'400'
@@ -26,7 +27,7 @@ export default function Home() {
             <h1>Seu Marketplace de coleta de resíduos.</h1>
             <p>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</p>
 
-            <a href="/cadastro">
+            <a href="/createPoint">
               <span>
                 <FiLogIn/>
               </span>
