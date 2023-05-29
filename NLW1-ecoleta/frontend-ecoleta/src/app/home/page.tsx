@@ -3,6 +3,7 @@ import Image from 'next/image'
 import './home.css'
 import { FiLogIn } from 'react-icons/fi'
 import logo from './assets/logo.svg'
+import Link from 'next/link'
 
 
 const roboto = Roboto({ 
@@ -27,12 +28,12 @@ export default function Home() {
             <h1>Seu Marketplace de coleta de resíduos.</h1>
             <p>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</p>
 
-            <a href="/createPoint">
+            <Link href="/createPoint">
               <span>
                 <FiLogIn/>
               </span>
               <strong>Cadastre um ponto de coleta</strong>
-            </a>
+            </Link>
           </main>
         </div>
       </div>

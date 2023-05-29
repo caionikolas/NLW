@@ -17,6 +17,7 @@ const ubuntu = Ubuntu({
 
 export const metadata = {
   title: 'Ecoleta',
+  
 }
 
 export default function RootLayout({
@@ -26,7 +27,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={roboto.className}>{children}</body>
+      <head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossOrigin=""/>
+      </head>
+      <body className={ubuntu.className}>{children}</body>
     </html>
   )
 }
