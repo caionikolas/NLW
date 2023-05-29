@@ -9,7 +9,7 @@ import {
 
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 
-import blurBG from './src/assets/bg-blur.png'
+import blurBg from './src/assets/bg-blur.png'
 import Stripes from './src/assets/stripes.svg'
 import NLWLogo from './src/assets/nlw-spacetime-logo.svg'
 
@@ -26,7 +26,7 @@ export default function App() {
 
   return (
       <ImageBackground
-        source={blurBG}
+        source={blurBg}
         className='flex-1 items-center bg-gray-900 px-8 py-10'
         imageStyle={{
           position: 'absolute',
@@ -61,6 +61,6 @@ export default function App() {
 
         <StatusBar style="light" translucent />
       </ImageBackground>
-  );
+  )
 }
 
