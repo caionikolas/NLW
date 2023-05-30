@@ -28,7 +28,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Ecoleta foi um projeto desenvolvido durante Next Level Week #01, Evento de tecnologia feito pela [Rockeseat](https://www.rocketseat.com.br). O projeto foi refeito utilizando tecnologias atuais.
+Ecoleta foi um projeto desenvolvido durante Next Level Week #01, Evento de tecnologia feito pela [Rockeseat](https://www.rocketseat.com.br). O projeto foi refeito utilizado tecnologias que estou estudando atualmente.
 
 ## 🔖 Layout
 
