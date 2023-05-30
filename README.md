@@ -1,10 +1,17 @@
 <h1 align="center">
-    <img alt="Ecoleta" title="Ecoleta" src=".github/ecoleta.svg" width="220px" />
+    <img alt="Ecoleta" title="Ecoleta" src=".github/nlw-logo.svg" width="220px" />
+</h1>
+<br>
+
+<h1 align="center">
+    NLW #01 - Omnistack <br>
+    <br>
+    <img alt="Ecoleta" title="Ecoleta" src=".github/nlw1-ecoleta.svg" width="220px" />
 </h1>
 <br>
 
 <p align="center">
-  <img alt="Ecoleta" src=".github/ecoleta.png" width="100%">
+  <img alt="Ecoleta" src=".github/nlw1-ecoleta.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
@@ -12,13 +19,16 @@
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Node.js](https://nodejs.org/en/)
+- [Knex](https://knexjs.org)
+- [NextJs](https://nextjs.org)
 - [React](https://reactjs.org)
+- [Axios](https://axios-http.com/ptbr/docs/intro)
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
 
 ## 💻 Projeto
 
-O Ecoleta é um marketplace que ajuda pessoas a encontrarem pontos de coleta de resíduos de forma eficiente.
+Ecoleta foi um projeto desenvolvido durante Next Level Week #01, Evento de tecnologia feito pela [Rockeseat](https://www.rocketseat.com.br). O projeto foi refeito utilizado tecnologias que estou estudando atualmente.
 
 ## 🔖 Layout
 
