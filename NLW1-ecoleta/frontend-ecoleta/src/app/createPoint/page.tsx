@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { MapContainer, Popup, TileLayer, Marker } from 'react-leaflet'
 import axios from 'axios'
 import api from '../../services/api'
+import { LeafletMouseEvent } from 'leaflet';
 
 interface Item {
     id: number;
@@ -69,6 +70,10 @@ export default function CreatePoint(){
         const city = event.target.value
 
         setSelectedCity(city)
+    }
+
+    function onclickmap(event: LeafletMouseEvent) {
+        console.log(event.latlng)
     }
 
     return (
