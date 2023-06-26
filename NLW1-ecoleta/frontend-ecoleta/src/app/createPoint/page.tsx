@@ -2,14 +2,15 @@
 
 import './styles.css';
 import Image from 'next/image'
-import { useEffect, useState, ChangeEvent } from 'react'
+import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
 import logo from '../home/assets/logo.svg'
 import { FiArrowDownLeft } from 'react-icons/fi';
 import Link from 'next/link';
-import { MapContainer, Popup, TileLayer, Marker } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import axios from 'axios'
 import api from '../../services/api'
-import { LeafletMouseEvent } from 'leaflet';
+import { LatLngExpression } from 'leaflet';
+import { useRouter } from 'next/navigation'
 
 interface Item {
     id: number;
@@ -28,9 +29,23 @@ interface IBGECityResponse {
 export default function CreatePoint(){
     const [items, setItems] = useState<Item[]>([]);
     const [ufs, setufs] = useState<string[]>([]);
-    const [selectedUf, setSelectedUf] = useState('0');
     const [cities, setCities] = useState<string[]>([]);
+
+    const [FormData, setFormData] = useState({
+        name: '',
+        email: '',
+        whatsapp: ''
+    })
+
+    const [selectedUf, setSelectedUf] = useState('0');
     const [selectedCity, setSelectedCity] = useState('0')
+    const [selectedItems, setSelectedItems] = useState<number[]>([])
+
+    const position:LatLngExpression = [-5.0891998, -42.8112109]
+    const setLatitude = position[0]
+    const setLongtude = position[1]
+
+    const router = useRouter()
 
     useEffect(() => {
         api.get('items').then(response => {
@@ -72,8 +87,51 @@ export default function CreatePoint(){
         setSelectedCity(city)
     }
 
-    function onclickmap(event: LeafletMouseEvent) {
-        console.log(event.latlng)
+    function handleInputChange(event: ChangeEvent<HTMLInputElement>){
+        const { name, value } = event.target;
+
+        setFormData({ ...FormData, [name]: value })
+    }
+
+    function handleSelectItem(id: number){
+        const alreadySelected = selectedItems.findIndex(item => item === id);
+
+        if (alreadySelected >= 0){
+            const filteredItems = selectedItems.filter(item => item !== id)
+
+            setSelectedItems(filteredItems)
+        } else{
+            setSelectedItems([ ...selectedItems, id ])
+        }
+    }
+
+
+    async function handleSubmit(event: FormEvent){
+        event.preventDefault();
+
+        const { name, email, whatsapp } = FormData;
+        const uf = selectedUf;
+        const city = selectedCity;
+        const latitude = setLatitude
+        const longitude = setLongtude
+        const items = selectedItems;
+
+        const data = {
+            name,
+            email,
+            whatsapp,
+            uf,
+            city,
+            latitude,
+            longitude,
+            items
+        };
+
+        await api.post('points', data);
+
+        alert('Ponto de coleta criado!');
+
+        router.push('/');
     }
 
     return (
@@ -92,7 +150,8 @@ export default function CreatePoint(){
                 </Link>
 
             </header>
-            <form>
+
+            <form onSubmit={handleSubmit}>
                 <h1>Cadastro do <br/> ponto de coleta</h1>
 
                 <fieldset>
@@ -107,6 +166,7 @@ export default function CreatePoint(){
                             type="text" 
                             name="name" 
                             id="name" 
+                            onChange={handleInputChange}
                         />
                     </div>
 
@@ -117,6 +177,7 @@ export default function CreatePoint(){
                                 type="email" 
                                 name="email" 
                                 id="email" 
+                                onChange={handleInputChange}
                             />
                         </div>
 
@@ -126,24 +187,25 @@ export default function CreatePoint(){
                                 type="text" 
                                 name="whatsapp" 
                                 id="whatsapp" 
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <fieldset >
                     <legend>
                         <h2>Endereço</h2>
                         <span>Selecione o endereço no mapa</span>
                     </legend>
 
-                    <MapContainer center={[-5.0891998, -42.8112109]} zoom={16}>
-                        <TileLayer
+                    <MapContainer  center={position} zoom={16}>
+                        <TileLayer 
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
 
-                        <Marker position={[-5.0891998, -42.8112109]}></Marker>
+                        <Marker position={position}></Marker>
                     </MapContainer>
 
                     <div className="field-group">
@@ -186,7 +248,11 @@ export default function CreatePoint(){
 
                     <ul className='items-grid'>
                         {items.map(item => (
-                            <li key={item.id}>
+                            <li 
+                            key={item.id} 
+                            onClick={() => handleSelectItem(item.id)}
+                            className={selectedItems.includes(item.id) ? 'selected' : ''}
+                            >
                             <img src={item.image_url} alt={item.title} />   
                             <span>{item.title}</span>
                         </li>
